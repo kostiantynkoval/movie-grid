@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import Routes from '../../components/routes/Routes';
+import Routes from 'components/routes/Routes';
 //import { getTokenFromPoolAction } from '../actions/user';
 //import { getTokenFromPoolActionConsumer } from '../actions/consumer';
 

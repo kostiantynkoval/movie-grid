@@ -19,7 +19,11 @@ const store = composeWithDevTools(applyMiddleware(middleware, thunkMiddleware))(
 const App = () =>
     (<Provider store={store}>
       <Router history={history}>
-        <Routes />
+          <div>
+              {console.log(__dirname)}
+              <Routes />
+          </div>
+
       </Router>
     </Provider>);
 
