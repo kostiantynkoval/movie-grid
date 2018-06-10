@@ -18,7 +18,7 @@ import {
 export const getMoviesAction = (pageNo) => dispatch => {
     dispatch(apiRequest(GET_MOVIES_REQUEST));
     axios
-        .get(`${BASE_URL}/movie/now_playing?api_key=${API_KEY}&language=ru-RU&page=${pageNo}`)
+        .get(`${BASE_URL}/movie/now_playing?api_key=${API_KEY}&page=${pageNo}`)
         .then(res => {
             console.log('res', res.data);
             dispatch(apiSuccess(GET_MOVIES_SUCCESS, res.data))

@@ -1,5 +1,5 @@
 import React from 'react'
-import ReactPaginate from 'react-paginate'
+import Pagination from "react-js-pagination";
 
 import MoviesPageWrapper from '../styled/MoviesPageWrapper'
 import MoviesPageHeader from '../styled/MoviesPageHeader'
@@ -20,16 +20,18 @@ class Movies extends React.Component {
 
     handlePageClick(data) {
         console.log(data);
-        this.props.getMoviesAction(data.selected);
+        this.props.getMoviesAction(data);
     }
 
     render() {
-        const { movies, page, total_pages, isRequesting } = this.props;
-        console.log(page)
+        const { movies, total_results, page, isRequesting } = this.props;
+        console.log(this.props)
         const paginatorOptions = {
-            containerClassName: "react-paginate",
-            pageCount: total_pages,
-            onPageChange: (data) => this.handlePageClick(data)
+            activePage: page,
+            itemsCountPerPage: 20,
+            totalItemsCount: total_results,
+            pageRangeDisplayed: 5,
+            onChange: data => this.handlePageClick(data)
         }
         return (
             <MoviesPageWrapper>
@@ -47,11 +49,11 @@ class Movies extends React.Component {
                     <MoviesContentBox>
                         { movies.map(movie => (
                             <MovieItem key={movie.id}>
-                                <img className="movie-image" src={`${BASE_IMG_URL}/${movie.poster_path}`} alt=""/>
+                                <img src={`${BASE_IMG_URL}/${movie.poster_path}`} alt="Movie Poster"/>
                             </MovieItem>))}
                     </MoviesContentBox>
                 </MoviesContentWrapper>
-                { !isRequesting && movies.length && <ReactPaginate {...paginatorOptions}/>}
+                { !isRequesting && movies.length && <Pagination {...paginatorOptions}/>}
             </MoviesPageWrapper>
         )
     }
