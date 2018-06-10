@@ -8,7 +8,6 @@ import MoviesContentWrapper from '../styled/MoviesContentWrapper'
 import MoviesContentTitle from '../styled/MoviesContentTitle'
 import MoviesContentBox from '../styled/MoviesContentBox'
 import MovieItem from '../styled/MovieItem'
-import star_death from 'assets/star_death.png'
 
 import { BASE_IMG_URL } from 'store/constants';
 
@@ -24,7 +23,7 @@ class Movies extends React.Component {
             <MoviesPageWrapper>
                 <MoviesPageHeader>
                     <MoviesPageHeaderInnerLeft>
-                        <img src={star_death} alt=""/>
+                        <img src={window.location.origin + '/star_death.png'} alt="Star of Death"/>
                         <span>Movies</span>
                     </MoviesPageHeaderInnerLeft>
                     <MoviesPageHeaderInnerRight>
@@ -34,7 +33,10 @@ class Movies extends React.Component {
                 <MoviesContentWrapper>
                     <MoviesContentTitle>Latest Releases</MoviesContentTitle>
                     <MoviesContentBox>
-                        { movies.map(movie => (<MovieItem key={movie.id} imageSrc={`${BASE_IMG_URL}342/${movie.poster_path}`}/>))}
+                        { movies.map(movie => (
+                            <MovieItem key={movie.id}>
+                                <img className="movie-image" src={`${BASE_IMG_URL}/${movie.poster_path}`} alt=""/>
+                            </MovieItem>))}
                     </MoviesContentBox>
                 </MoviesContentWrapper>
             </MoviesPageWrapper>

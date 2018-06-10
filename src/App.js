@@ -9,6 +9,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import Routes from './containers/routes/Routes'
 
 import rootReducer from './store/reducers'
+
 const history = createHistory();
 const middleware = routerMiddleware(history);
 
@@ -19,11 +20,7 @@ const store = composeWithDevTools(applyMiddleware(middleware, thunkMiddleware))(
 const App = () =>
     (<Provider store={store}>
       <Router history={history}>
-          <div>
-              {console.log(__dirname)}
-              <Routes />
-          </div>
-
+        <Routes />
       </Router>
     </Provider>);
 
