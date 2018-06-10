@@ -15,12 +15,14 @@ const initialState = {
     movies: [],
     page: 0,
     total_results: 0,
-    total_pages: 0
+    total_pages: 0,
+    movie: {}
 };
 
 export default function (state = initialState, action) {
     switch (action.type) {
         case GET_MOVIES_REQUEST:
+        case GET_SINGLE_MOVIE_REQUEST:
             return {
                 ...state,
                 isRequesting: true,
@@ -39,6 +41,18 @@ export default function (state = initialState, action) {
                 ...state,
                 isRequesting: false,
                 movies: []
+            };
+        case GET_SINGLE_MOVIE_SUCCESS:
+            return {
+                ...state,
+                isRequesting: false,
+                movie: action.payload
+            };
+        case GET_SINGLE_MOVIE_FAIL:
+            return {
+                ...state,
+                isRequesting: false,
+                movie: {}
             };
         default:
             return {...state}

@@ -72,4 +72,11 @@ ul.pagination li.active a {
 ul.pagination a:not(:disabled):not(.disabled) {
     cursor: pointer;
 }
+ul.pagination a:hover {
+    z-index: 2;
+    color: #0056b3;
+    text-decoration: none;
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+}
 `

@@ -28,3 +28,17 @@ export const getMoviesAction = (pageNo) => dispatch => {
             dispatch(apiFail(GET_MOVIES_FAIL, err))
         })
 }
+
+export const getSingleMovieAction = (id) => dispatch => {
+    dispatch(apiRequest(GET_SINGLE_MOVIE_REQUEST));
+    axios
+        .get(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`)
+        .then(res => {
+            console.log('res', res.data);
+            dispatch(apiSuccess(GET_SINGLE_MOVIE_SUCCESS, res.data))
+        })
+        .catch(err => {
+            console.log('err', err);
+            dispatch(apiFail(GET_SINGLE_MOVIE_FAIL, err))
+        })
+}

@@ -1,5 +1,7 @@
 import React from 'react'
 import Pagination from "react-js-pagination";
+import Modal from 'containers/modal/Modal';
+import reduxDialog from 'redux-dialog';
 
 import MoviesPageWrapper from '../styled/MoviesPageWrapper'
 import MoviesPageHeader from '../styled/MoviesPageHeader'
@@ -11,11 +13,25 @@ import MoviesContentBox from '../styled/MoviesContentBox'
 import MovieItem from '../styled/MovieItem'
 
 import { BASE_IMG_URL } from 'store/constants';
+import './Movies.css';
+
+const Dialog = reduxDialog({
+    name: "MovieWindow"
+})(Modal);
 
 class Movies extends React.Component {
+    constructor(props) {
+        super(props);
+        this.openModal = this.openModal.bind(this);
+    }
 
     componentDidMount() {
         this.props.getMoviesAction(1);
+    }
+
+    openModal(e, id) {
+        e.preventDefault();
+        this.props.openDialog(id);
     }
 
     handlePageClick(data) {
@@ -48,12 +64,18 @@ class Movies extends React.Component {
                     <MoviesContentTitle>Latest Releases</MoviesContentTitle>
                     <MoviesContentBox>
                         { movies.map(movie => (
-                            <MovieItem key={movie.id}>
+                            <MovieItem key={movie.id} onClick={(e) => this.openModal(e, movie.id)}>
                                 <img src={`${BASE_IMG_URL}/${movie.poster_path}`} alt="Movie Poster"/>
                             </MovieItem>))}
                     </MoviesContentBox>
                 </MoviesContentWrapper>
-                { !isRequesting && movies.length && <Pagination {...paginatorOptions}/>}
+                { !isRequesting && movies.length && <Pagination {...paginatorOptions}/> }
+                <Dialog
+                    onAfterOpen={() => console.log('On After Open')}
+                    onRequestClose={() => console.log('On Request Close')}
+                    className="myContentClass"
+                    overlayClassName="myOverlayClass"
+                />
             </MoviesPageWrapper>
         )
     }

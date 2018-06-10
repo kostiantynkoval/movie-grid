@@ -3,10 +3,14 @@ import { withRouter } from 'react-router-dom';
 import Movies from 'components/movies'
 import PropTypes from 'prop-types'
 import { getMoviesAction } from 'store/actions/movies'
+import { openDialog } from 'redux-dialog';
 
 const mapDispatchToProps = dispatch => ({
     getMoviesAction: (page) => {
         dispatch(getMoviesAction(page));
+    },
+    openDialog: (id) => {
+        dispatch(openDialog('MovieWindow', {id}));
     }
 });
 
