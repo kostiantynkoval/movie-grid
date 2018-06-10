@@ -14,16 +14,44 @@ display: block;
 margin: 0;
 padding: 0;
 width: 100%;
+cursor: pointer;
 }
  &:nth-of-type(2n) {
     margin-right: 0;
 }
-@media screen and (min-width: 576px) {
-    width: calc(25% - 6px);
+@media screen and (min-width: 412px) {
+    width: calc(33% - 6px);
     &:nth-of-type(2n) {
       margin-right: 8px;
     }
+    &:nth-of-type(3n) {
+      margin-right: 0;
+    }
+}
+@media screen and (min-width: 576px) {
+    width: calc(25% - 6px);
+    &:nth-of-type(3n) {
+      margin-right: 8px;
+    }
     &:nth-of-type(4n) {
+      margin-right: 0;
+    }
+}
+@media screen and (min-width: 768px) {
+    width: calc(20% - 8px);
+    &:nth-of-type(4n) {
+      margin-right: 8px;
+    }
+    &:nth-of-type(5n) {
+      margin-right: 0;
+    }
+}
+@media screen and (min-width: 992px) {
+    width: calc(16.66% - 7px);
+    &:nth-of-type(5n) {
+      margin-right: 8px;
+    }
+    &:nth-of-type(6n) {
       margin-right: 0;
     }
 }

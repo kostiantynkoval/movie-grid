@@ -13,7 +13,7 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state => ({
     isRequesting: state.movies.isRequesting,
     movies: state.movies.movies,
-    page: state.movies.movies,
+    page: state.movies.page,
     total_results: state.movies.total_results,
     total_pages: state.movies.total_pages,
 });

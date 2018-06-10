@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactPaginate from 'react-paginate'
 
 import MoviesPageWrapper from '../styled/MoviesPageWrapper'
 import MoviesPageHeader from '../styled/MoviesPageHeader'
@@ -14,11 +15,22 @@ import { BASE_IMG_URL } from 'store/constants';
 class Movies extends React.Component {
 
     componentDidMount() {
-        this.props.getMoviesAction(10);
+        this.props.getMoviesAction(1);
+    }
+
+    handlePageClick(data) {
+        console.log(data);
+        this.props.getMoviesAction(data.selected);
     }
 
     render() {
-        const { movies } = this.props;
+        const { movies, page, total_pages, isRequesting } = this.props;
+        console.log(page)
+        const paginatorOptions = {
+            containerClassName: "react-paginate",
+            pageCount: total_pages,
+            onPageChange: (data) => this.handlePageClick(data)
+        }
         return (
             <MoviesPageWrapper>
                 <MoviesPageHeader>
@@ -39,6 +51,7 @@ class Movies extends React.Component {
                             </MovieItem>))}
                     </MoviesContentBox>
                 </MoviesContentWrapper>
+                { !isRequesting && movies.length && <ReactPaginate {...paginatorOptions}/>}
             </MoviesPageWrapper>
         )
     }
