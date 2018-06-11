@@ -9,13 +9,23 @@ export default styled.nav`
   align-self: stretch;
   padding: 0 15px;
   background: transparent;
-  @media screen and (min-width: 524px) {
-      background: #666666;
-  }
   .nav-item {
       cursor: pointer;
-      color: #ddd;
+      color: #fff;
       text-shadow: 0px 0px 6px rgb(0, 0, 0);
       text-transform: uppercase;
+  }
+  @media screen and (min-width: 768px) {
+      .nav-item {
+          color: #eee;
+          text-shadow: 0px 0px 6px rgb(0, 0, 0);
+          text-transform: capitalize;
+      }
+      .nav-item__back:after {
+          content: " to list";
+      }
+      .nav-item__next:after {
+          content: " Movie";
+      }
   }
 `

@@ -17,11 +17,13 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state => ({
     isRequesting: state.movies.isRequesting,
     movie: state.movies.movie,
+    movies: state.movies.movies,
 });
 
 Modal.propTypes = {
     isRequesting: PropTypes.bool,
     movie: PropTypes.object,
+    movies: PropTypes.array,
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Modal));

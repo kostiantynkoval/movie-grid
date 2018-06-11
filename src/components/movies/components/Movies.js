@@ -29,9 +29,9 @@ class Movies extends React.Component {
         this.props.getMoviesAction(1);
     }
 
-    openModal(e, id) {
+    openModal(e, id, index) {
         e.preventDefault();
-        this.props.openDialog(id);
+        this.props.openDialog(id, index);
     }
 
     handlePageClick(data) {
@@ -63,16 +63,14 @@ class Movies extends React.Component {
                 <MoviesContentWrapper>
                     <MoviesContentTitle>Latest Releases</MoviesContentTitle>
                     <MoviesContentBox>
-                        { movies.map(movie => (
-                            <MovieItem key={movie.id} onClick={(e) => this.openModal(e, movie.id)}>
+                        { movies.map((movie, index) => movie.poster_path && (
+                            <MovieItem key={movie.id} onClick={(e) => this.openModal(e, movie.id, index)}>
                                 <img src={`${BASE_IMG_URL}/${movie.poster_path}`} alt="Movie Poster"/>
                             </MovieItem>))}
                     </MoviesContentBox>
                 </MoviesContentWrapper>
                 { !isRequesting && movies.length && <Pagination {...paginatorOptions}/> }
                 <Dialog
-                    onAfterOpen={() => console.log('On After Open')}
-                    onRequestClose={() => console.log('On Request Close')}
                     className="myContentClass"
                     overlayClassName="myOverlayClass"
                 />

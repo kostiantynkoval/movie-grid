@@ -9,8 +9,8 @@ const mapDispatchToProps = dispatch => ({
     getMoviesAction: (page) => {
         dispatch(getMoviesAction(page));
     },
-    openDialog: (id) => {
-        dispatch(openDialog('MovieWindow', {id}));
+    openDialog: (id, index) => {
+        dispatch(openDialog('MovieWindow', {id, index}));
     }
 });
 
