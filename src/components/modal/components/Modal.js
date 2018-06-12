@@ -1,6 +1,9 @@
 import React from 'react'
 import Moment from 'react-moment'
 
+import ChevronLeft from './ChevronLeft'
+import ChevronRight from './ChevronRight'
+
 import ModalFullWrapper from '../styled/ModalFullWrapper'
 import ModalContainer from '../styled/ModalContainer'
 import Navigation from '../styled/Navigation'
@@ -39,8 +42,8 @@ class Modal extends React.Component {
             { !isRequesting && !!release_date ?
                 <ModalContainer constUrl={BASE_IMG_URL} path={backdrop_path}>
                     <Navigation>
-                        <div className="nav-item nav-item__back" onClick={(e) => this.closeWindow(e)}>back</div>
-                        <div className="nav-item nav-item__next" onClick={(e) => this.nextMovie(e)}>next</div>
+                        <div className="nav-item nav-item__back" onClick={(e) => this.closeWindow(e)}><div className="chevron-left__mobile"><ChevronLeft/></div><span>back</span></div>
+                        <div className="nav-item nav-item__next" onClick={(e) => this.nextMovie(e)}><span>next</span><div className="chevron-right__mobile"><ChevronRight/></div></div>
                     </Navigation>
                     <MainInfo>
                         <div className="image-wrapper">
