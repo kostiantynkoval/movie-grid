@@ -2,6 +2,7 @@ import React from 'react'
 import Pagination from "react-js-pagination";
 import Modal from 'containers/modal/Modal';
 import reduxDialog from 'redux-dialog';
+import Dropdown from 'components/dropdown';
 
 import MoviesPageWrapper from '../styled/MoviesPageWrapper'
 import MoviesPageHeader from '../styled/MoviesPageHeader'
@@ -57,7 +58,7 @@ class Movies extends React.Component {
                         <span>Movies</span>
                     </MoviesPageHeaderInnerLeft>
                     <MoviesPageHeaderInnerRight>
-                        <span>Dropdown</span>
+                        <Dropdown/>
                     </MoviesPageHeaderInnerRight>
                 </MoviesPageHeader>
                 <MoviesContentWrapper>
